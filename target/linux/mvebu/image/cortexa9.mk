@@ -245,6 +245,20 @@ define Device/kobol_helios4
 endef
 TARGET_DEVICES += kobol_helios4
 
+define Device/lenovo_ix4-300d
+  $(Device/NAND-128K)
+  DEVICE_VENDOR := Lenovo
+  DEVICE_MODEL := Iomega ix4-300d
+  DEVICE_DTS := armada-xp-lenovo-ix4-300d
+  KERNEL_SIZE := 4096k
+  IMAGE_SIZE := 1024m
+  KERNEL := kernel-bin | append-dtb | uImage none
+  KERNEL_INITRAMFS := kernel-bin | append-dtb | uImage none
+  DEVICE_PACKAGES := mkf2fs e2fsprogs partx-utils kmod-hwmon-drivetemp
+  SUPPORTED_DEVICES += armada-xp-lenovo-ix4-300d
+endef
+TARGET_DEVICES += lenovo_ix4-300d
+
 define Device/linksys
   $(Device/NAND-128K)
   DEVICE_VENDOR := Linksys
