@@ -41,7 +41,8 @@ mvebu_setup_interfaces()
 	iij,sa-w2)
 		ucidef_set_interfaces_lan_wan "ge1_0 ge1_1 ge1_2 ge1_3" "ge0"
 		;;
-	iptime,nas1dual)
+	iptime,nas1dual|\
+	lenovo,ix4-300d)
 		ucidef_set_interface_lan "eth0 eth1" "dhcp"
 		;;
 	marvell,a385-db-ap)
@@ -83,6 +84,9 @@ mvebu_setup_macs()
 	ctera,c200-v2)
 		label_mac=$(mtd_get_mac_ascii dev_params mac)
 		lan_mac=$label_mac
+		;;
+	lenovo,ix4-300d)
+		lan_mac=$(mtd_get_mac_ascii u-boot-env ethaddr)
 		;;
 	linksys,wrt1200ac|\
 	linksys,wrt1900ac-v2|\
